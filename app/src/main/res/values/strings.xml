@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Fibonacci Number</string>
+    <string name="tv_title">Fibonacci Test</string>
+    <string name="tv_input">Input Number:</string>
+    <string name="tv_output">Output Number:</string>
+    <string name="btn_clear">Clear</string>
+    <string name="btn_db_reset">Reset</string>
+</resources>
