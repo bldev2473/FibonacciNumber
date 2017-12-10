@@ -20,7 +20,8 @@
             android:layout_marginTop="10dp"
             android:text="@string/tv_title" />
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/rl1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -28,28 +29,35 @@
             android:paddingRight="5dp">
 
             <TextView
+                android:id="@+id/rl1_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
                 android:text="@string/tv_input" />
 
             <EditText
                 android:id="@+id/input_number_et"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="9"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/rl1_tv"
                 android:inputType="number" />
 
             <Button
                 android:id="@+id/input_number_btn"
-                android:layout_width="20dp"
+                android:layout_width="50dp"
                 android:layout_height="40dp"
-                android:layout_weight="1"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:text="Go"
                 android:textSize="12sp" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/rl2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -57,26 +65,31 @@
             android:paddingRight="5dp">
 
             <TextView
+                android:id="@+id/rl2_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
                 android:text="@string/tv_output" />
 
             <TextView
                 android:id="@+id/output_number_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
-                android:layout_weight="8" />
+                android:layout_toRightOf="@id/rl2_tv" />
 
             <Button
                 android:id="@+id/clear_number_btn"
-                android:layout_width="30dp"
+                android:layout_width="70dp"
                 android:layout_height="40dp"
-                android:layout_weight="2"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:text="@string/btn_clear"
                 android:textSize="12sp" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <ScrollView
             android:layout_width="match_parent"

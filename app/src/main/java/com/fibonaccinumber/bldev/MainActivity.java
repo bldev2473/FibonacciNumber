@@ -30,7 +30,15 @@ public class MainActivity extends AppCompatActivity implements TestContract.View
 
         inputBtn.setOnClickListener((View v) -> {
             if (!et.getText().toString().equals("")) {
-                Integer etTemp = Integer.parseInt(et.getText().toString());
+                Integer etTemp;
+                //Exception Handler for NumberFormatException
+                try {
+                    etTemp = Integer.parseInt(et.getText().toString());
+                } catch (NumberFormatException ex) {
+                    ex.printStackTrace();
+                    etTemp = 0;
+                }
+
                 Integer resultOfFib = presenter.inputTestNumberToModel(etTemp);
 
                 tv.setText(String.valueOf(resultOfFib));

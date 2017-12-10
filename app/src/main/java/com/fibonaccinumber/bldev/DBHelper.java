@@ -4,8 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
 import java.util.HashMap;
 
 /**
@@ -39,9 +41,13 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("CREATE TABLE IF NOT EXISTS Fibonacci" + "(InputNumber integer PRIMARY KEY, OutputNumber integer)");
         ContentValues contentValues = new ContentValues();
-        contentValues.put("InputNumber", inputNum);
-        contentValues.put("OutputNumber", outputNum);
-        db.insert("Fibonacci", null, contentValues);
+        try {
+            contentValues.put("InputNumber", inputNum);
+            contentValues.put("OutputNumber", outputNum);
+            db.insert("Fibonacci", null, contentValues);
+        } catch (SQLiteConstraintException ex) {
+            ex.printStackTrace();
+        }
     }
 
     public Cursor getData(int inputNum) {

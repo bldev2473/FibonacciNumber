@@ -30,21 +30,26 @@ public class TestModel {
     Function calFib = (int n) -> {
         int i = 0, j = 1, k = 0;
         if (n == 0 || n == 1) {
+            msgForView = "";
+            sendMsgToView();
             return n;
         } else {
             for (int l = 1; l < n; l++) {
-                k = i + j;
-                i = j;
-                j = k;
+                if (!checkIntegerOverflow(i, j)) {
+                    msgForView = "";
+                    sendMsgToView();
+                    k = i + j;
+                    i = j;
+                    j = k;
+                } else {
+                    //OutputNumber Overflow
+                    msgForView = "Overflow";
+                    sendMsgToView();
+                    k = 0;
+                    break;
+                }
             }
-            if (k > 0)
-                return k;
-            else {
-                //OutputNumber Overflow
-                msgForView = "Overflow";
-                sendMsgToView();
-                return 0;
-            }
+            return k;
         }
     };
 
@@ -78,5 +83,14 @@ public class TestModel {
 
     public String sendMsgToView() {
         return msgForView;
+    }
+
+    public boolean checkIntegerOverflow(int a, int b) {
+        long result = ((long) a) + b;
+        if (result > Integer.MAX_VALUE)
+            return true;
+        else if (result < Integer.MIN_VALUE)
+            return false;
+        return false;
     }
 }
